@@ -82,7 +82,7 @@ final class CronAdmin extends AbstractAdmin
             ->add('module')
             ->add('priority')
             ->add('callback')
-            ->add('parameters', FieldDescriptionInterface::TYPE_ARRAY)
+            ->add('variables', FieldDescriptionInterface::TYPE_ARRAY)
             ->add('status')
             ->add('duration')
             ->add('error')
@@ -109,7 +109,7 @@ final class CronAdmin extends AbstractAdmin
         $showMapper
             ->add('module')
             ->add('callback')
-            ->add('parameters', FieldDescriptionInterface::TYPE_ARRAY)
+            ->add('variables', FieldDescriptionInterface::TYPE_ARRAY)
             ->add('priority')
             ->add('status')
             ->add('duration')
