@@ -113,7 +113,7 @@ final class CronAdmin extends AbstractAdmin
             ->add('priority')
             ->add('status')
             ->add('duration')
-            ->add('log')
+            ->add('messages')
             ->add('error')
             ->add('timestamp', null, [
                 'format' => self::FORMAT_DATETIME,
