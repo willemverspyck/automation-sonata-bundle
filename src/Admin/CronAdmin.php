@@ -15,6 +15,8 @@ use Sonata\DoctrineORMAdminBundle\Filter\ModelFilter;
 use Sonata\Form\Type\DateTimePickerType;
 use Spyck\AutomationBundle\Entity\Cron;
 use Spyck\AutomationSonataBundle\Controller\CronController;
+use Spyck\SonataExtension\Utility\AutocompleteUtility;
+use Spyck\SonataExtension\Utility\DateTimeUtility;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -28,11 +30,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 ])]
 final class CronAdmin extends AbstractAdmin
 {
-    private const FORMAT_DATETIME = 'Y-m-d H:i:s';
-
-    protected array $addRoutes = ['reset'];
-    protected array $removeRoutes = ['create', 'delete'];
-
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
@@ -58,7 +55,7 @@ final class CronAdmin extends AbstractAdmin
         $datagridMapper
             ->add('module', ModelFilter::class, [
                 'field_options' => [
-                    'callback' => [$this, 'getAutocompleteSearch'],
+                    'callback' => [AutocompleteUtility::class, 'callbackFilter'],
                     'multiple' => true,
                     'property' => [
                         'name',
@@ -87,10 +84,10 @@ final class CronAdmin extends AbstractAdmin
             ->add('duration')
             ->add('error')
             ->add('timestamp', null, [
-                'format' => self::FORMAT_DATETIME,
+                'format' => DateTimeUtility::FORMAT_DATETIME,
             ])
             ->add('timestampAvailable', null, [
-                'format' => self::FORMAT_DATETIME,
+                'format' => DateTimeUtility::FORMAT_DATETIME,
             ])
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
@@ -116,10 +113,10 @@ final class CronAdmin extends AbstractAdmin
             ->add('messages')
             ->add('error')
             ->add('timestamp', null, [
-                'format' => self::FORMAT_DATETIME,
+                'format' => DateTimeUtility::FORMAT_DATETIME,
             ])
             ->add('timestampAvailable', null, [
-                'format' => self::FORMAT_DATETIME,
+                'format' => DateTimeUtility::FORMAT_DATETIME,
             ]);
     }
 
@@ -133,5 +130,16 @@ final class CronAdmin extends AbstractAdmin
         }
 
         return $actions;
+    }
+
+    protected function getAddRoutes(): iterable
+    {
+        yield 'reset';
+    }
+
+    protected function getRemoveRoutes(): iterable
+    {
+        yield 'create';
+        yield 'delete';
     }
 }

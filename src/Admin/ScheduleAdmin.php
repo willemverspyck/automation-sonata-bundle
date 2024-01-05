@@ -20,8 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 ])]
 final class ScheduleAdmin extends AbstractAdmin
 {
-    protected array $removeRoutes = ['show'];
-
     protected function configureFormFields(FormMapper $form): void
     {
         $hours = range(0, 23);
@@ -80,5 +78,10 @@ final class ScheduleAdmin extends AbstractAdmin
                     'delete' => [],
                 ],
             ]);
+    }
+
+    protected function getRemoveRoutes(): iterable
+    {
+        yield 'show';
     }
 }

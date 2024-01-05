@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Spyck\AutomationSonataBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController;
+use Spyck\SonataExtension\Controller\AbstractController as BaseAbstractController;
 
-abstract class AbstractController extends CRUDController
+abstract class AbstractController extends BaseAbstractController
 {
 }
