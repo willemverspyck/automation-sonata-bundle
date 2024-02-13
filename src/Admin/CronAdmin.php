@@ -54,8 +54,8 @@ final class CronAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('module', ModelFilter::class, [
+                'callback' => [AutocompleteUtility::class, 'callbackFilter'],
                 'field_options' => [
-                    'callback' => [AutocompleteUtility::class, 'callbackFilter'],
                     'multiple' => true,
                     'property' => [
                         'name',
