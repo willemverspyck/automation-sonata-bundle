@@ -82,7 +82,7 @@ final class CronAdmin extends AbstractAdmin
             ->add('variables', FieldDescriptionInterface::TYPE_ARRAY)
             ->add('status')
             ->add('duration')
-            ->add('error')
+            ->add('errors')
             ->add('timestamp', null, [
                 'format' => DateTimeUtility::FORMAT_DATETIME,
             ])
@@ -111,7 +111,7 @@ final class CronAdmin extends AbstractAdmin
             ->add('status')
             ->add('duration')
             ->add('messages')
-            ->add('error')
+            ->add('errors')
             ->add('timestamp', null, [
                 'format' => DateTimeUtility::FORMAT_DATETIME,
             ])
