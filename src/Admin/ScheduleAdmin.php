@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Spyck\AutomationSonataBundle\Admin;
 
-use DateTime;
+use DateTimeImmutable;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -50,10 +50,9 @@ final class ScheduleAdmin extends AbstractAdmin
                 ->add('weekdays', ChoiceType::class, [
                     'choices' => array_combine($weekdays, $weekdays),
                     'choice_label' => function (int $value) {
-                        $date = new DateTime('Sunday');
-                        $date->modify(sprintf('+%d day', $value));
+                        $date = new DateTimeImmutable('Sunday');
 
-                        return $date->format('l');
+                        return $date->modify(sprintf('+%d day', $value))->format('l');
                     },
                     'multiple' => true,
                     'required' => false,
