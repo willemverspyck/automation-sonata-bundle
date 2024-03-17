@@ -6,9 +6,6 @@ namespace Spyck\AutomationSonataBundle\Admin;
 
 use Doctrine\Common\Collections\Criteria;
 use Spyck\SonataExtension\Admin\AbstractAdmin as BaseAbstractAdmin;
-use Sonata\AdminBundle\Admin\AdminInterface;
-use Sonata\AdminBundle\Route\RouteCollectionInterface;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Contracts\Service\Attribute\Required;
 
 abstract class AbstractAdmin extends BaseAbstractAdmin
