@@ -51,6 +51,6 @@ final class CronController extends AbstractController
 
         $this->addFlash('sonata_flash_success', 'Selected crons has been reset.');
 
-        return $this->getUrlForRedirect($admin);
+        return $this->redirectToList();
     }
 }
