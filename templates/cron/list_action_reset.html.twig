@@ -1,4 +1,4 @@
-{% if admin.hasAccess('edit', object) and admin.hasRoute('reset') and object.status in ['error'] %}
+{% if admin.hasAccess('edit', object) and admin.hasRoute('reset') and object.status not in [constant('Spyck\\AutomationBundle\\Entity\\Cron::STATUS_PENDING')] %}
     <a href="{{ admin.generateObjectUrl('reset', object) }}" class="btn btn-sm btn-default" title="Reset">
         <i class="glyphicon glyphicon-refresh"></i>
         Reset
