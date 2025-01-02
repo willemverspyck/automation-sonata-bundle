@@ -27,11 +27,4 @@ abstract class AbstractAdmin extends BaseAbstractAdmin implements SecurityInterf
         $sortValues['_sort_order'] = Criteria::DESC;
         $sortValues['_sort_by'] = 'id';
     }
-
-    protected function getRemoveRoutes(): iterable
-    {
-        yield 'create';
-        yield 'delete';
-        yield 'show';
-    }
 }
