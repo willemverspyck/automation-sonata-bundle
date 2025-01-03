@@ -117,6 +117,12 @@ final class CronAdmin extends AbstractAdmin
             ])
             ->add('timestampAvailable', null, [
                 'format' => DateTimeUtility::FORMAT_DATETIME,
+            ])
+            ->add('timestampCreated', null, [
+                'format' => DateTimeUtility::FORMAT_DATETIME,
+            ])
+            ->add('timestampUpdated', null, [
+                'format' => DateTimeUtility::FORMAT_DATETIME,
             ]);
     }
 
