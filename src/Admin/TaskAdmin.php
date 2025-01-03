@@ -22,6 +22,12 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 ])]
 final class TaskAdmin extends AbstractAdmin
 {
+    protected function configureDefaultSortValues(array &$sortValues): void
+    {
+        $sortValues['_sort_order'] = 'ASC';
+        $sortValues['_sort_by'] = 'priority';
+    }
+
     protected function configureFormFields(FormMapper $form): void
     {
         $subject = $this->getSubject();
@@ -53,6 +59,8 @@ final class TaskAdmin extends AbstractAdmin
         $list
             ->add('module')
             ->add('schedule')
+            ->add('variables')
+            ->add('priority')
             ->add('active')
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
