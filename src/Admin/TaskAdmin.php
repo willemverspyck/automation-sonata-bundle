@@ -10,11 +10,13 @@ use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Spyck\AutomationBundle\Entity\Task;
+use Spyck\AutomationSonataBundle\Controller\TaskController;
 use Spyck\SonataExtension\Form\Type\ParameterType;
 use Spyck\SonataExtension\Utility\DateTimeUtility;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 #[AutoconfigureTag('sonata.admin', [
+    'controller' => TaskController::class,
     'group' => 'Automation',
     'manager_type' => 'orm',
     'model_class' => Task::class,
@@ -34,6 +36,7 @@ final class TaskAdmin extends AbstractAdmin
 
         $form
             ->with('Fields')
+                ->add('name')
                 ->add('module', null, [
                     'required' => true,
                 ])
@@ -49,6 +52,7 @@ final class TaskAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagrid): void
     {
         $datagrid
+            ->add('name')
             ->add('module')
             ->add('schedule')
             ->add('active');
@@ -57,6 +61,7 @@ final class TaskAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
+            ->add('name')
             ->add('module')
             ->add('schedule')
             ->add('variables')
@@ -66,6 +71,9 @@ final class TaskAdmin extends AbstractAdmin
                 'actions' => [
                     'show' => [],
                     'edit' => [],
+                    'clone' => [
+                        'template' => '@SpyckSonataExtension/list_action_clone.html.twig',
+                    ],
                     'delete' => [],
                 ],
             ]);
@@ -74,6 +82,7 @@ final class TaskAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
+            ->add('name')
             ->add('module')
             ->add('schedule')
             ->add('variables', FieldDescriptionInterface::TYPE_ARRAY)
@@ -85,5 +94,10 @@ final class TaskAdmin extends AbstractAdmin
             ->add('timestampUpdated', null, [
                 'format' => DateTimeUtility::FORMAT_DATETIME,
             ]);
+    }
+
+    protected function getAddRoutes(): iterable
+    {
+        yield 'clone';
     }
 }
