@@ -40,7 +40,7 @@ final class TaskAdmin extends AbstractAdmin
                 ->add('module', null, [
                     'required' => true,
                 ])
-                ->add('schedule', null, [
+                ->add('schedules', null, [
                     'required' => false,
                 ])
                 ->add('variables', ParameterType::class)
@@ -54,7 +54,7 @@ final class TaskAdmin extends AbstractAdmin
         $datagrid
             ->add('name')
             ->add('module')
-            ->add('schedule')
+            ->add('schedules')
             ->add('active');
     }
 
@@ -63,7 +63,7 @@ final class TaskAdmin extends AbstractAdmin
         $list
             ->add('name')
             ->add('module')
-            ->add('schedule')
+            ->add('schedules')
             ->add('variables')
             ->add('priority')
             ->add('active')
@@ -84,7 +84,7 @@ final class TaskAdmin extends AbstractAdmin
         $showMapper
             ->add('name')
             ->add('module')
-            ->add('schedule')
+            ->add('schedules')
             ->add('variables', FieldDescriptionInterface::TYPE_ARRAY)
             ->add('priority')
             ->add('active')
