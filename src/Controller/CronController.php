@@ -34,7 +34,7 @@ final class CronController extends AbstractController
 
         DataUtility::assert($cron instanceof Cron, $this->createNotFoundException('Unable to find the cron'));
 
-        $this->cronService->resetCron($cron);
+        $this->cronService->patchCronForReset($cron);
 
         $this->addFlash('sonata_flash_success', 'Cron has been reset.');
 
@@ -46,7 +46,7 @@ final class CronController extends AbstractController
         $admin->checkAccess('edit');
 
         foreach ($proxyQuery->getQuery()->toIterable() as $object) {
-            $this->cronService->resetCron($object, true);
+            $this->cronService->patchCronForReset($object, true);
         }
 
         $this->addFlash('sonata_flash_success', 'Selected crons has been reset.');
