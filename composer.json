@@ -22,6 +22,7 @@
         "sonata-project/admin-bundle": "^4",
         "sonata-project/doctrine-orm-admin-bundle": "^4",
         "sonata-project/form-extensions": "^2",
+        "spyck/automation-bundle": "dev-main",
         "spyck/sonata-extension": "dev-main",
         "symfony/framework-bundle": "^6|^7"
     },
