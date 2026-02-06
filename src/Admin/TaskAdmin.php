@@ -75,6 +75,9 @@ final class TaskAdmin extends AbstractAdmin
                         'template' => '@SpyckSonataExtension/list_action_clone.html.twig',
                     ],
                     'delete' => [],
+                    'message' => [
+                        'template' => '@SpyckAutomationSonata/task/list_action_message.html.twig',
+                    ],
                 ],
             ]);
     }
@@ -99,5 +102,6 @@ final class TaskAdmin extends AbstractAdmin
     protected function getAddRoutes(): iterable
     {
         yield 'clone';
+        yield 'message';
     }
 }
