@@ -18,19 +18,19 @@
     "homepage": "https://github.com/willemverspyck/automation-sonata-bundle",
     "type": "library",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "sonata-project/admin-bundle": "^4",
         "sonata-project/doctrine-orm-admin-bundle": "^4",
         "sonata-project/form-extensions": "^2",
-        "spyck/automation-bundle": "dev-main",
+        "spyck/automation-bundle": "^1",
         "spyck/sonata-extension": "dev-main",
-        "symfony/framework-bundle": "^6|^7|^8"
+        "symfony/framework-bundle": "^7.4|^8.1"
     },
     "require-dev": {
         "escapestudios/symfony2-coding-standard": "^3",
         "friendsofphp/php-cs-fixer": "^3",
-        "phpunit/phpunit": "^12",
-        "squizlabs/php_codesniffer": "^3"
+        "phpunit/phpunit": "^13",
+        "squizlabs/php_codesniffer": "^4"
     },
     "autoload": {
         "psr-4": {
