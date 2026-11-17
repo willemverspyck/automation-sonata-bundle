@@ -66,7 +66,7 @@ final class CronAdmin extends AbstractAdmin
             ->add('callback')
             ->add('status', ChoiceFilter::class, [
                 'field_options' => [
-                    'choices' => Cron::getStatusData(true),
+                    'choices' => Cron::getStatuses(true),
                     'multiple' => true,
                 ],
                 'field_type' => ChoiceType::class,
